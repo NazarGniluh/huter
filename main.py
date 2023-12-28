@@ -1,5 +1,6 @@
 import pygame
 
+import Patron
 import Reketa
 import Astero
 
@@ -13,13 +14,15 @@ fonks = pygame.transform.scale(fonks, (500, 500))
 
 
 raketa = Reketa.Reketa(200, 440, 50, 50, 5, "rocket.png" )
-aster = Astero.Astero((250, 350, 30, 20, 5, "asteroid.png")
+
 
 
 
 asteroud = []
-asteroud.append(Astero(50, 0, 50, 50, 10, "asteroid.png"))
-asteroud.append(Astero(50, 0, 50, 50, 10, "asteroid.png"))
+
+asteroud.append(Astero.Astero(10, -50, 50, 50, 5, "asteroid.png"))
+asteroud.append(Astero.Astero(60, -50, 50, 50, 5, "asteroid.png"))
+asteroud.append(Astero.Astero(134, -50, 50, 50, 5, "asteroid.png"))
 
 game = True
 while game:
@@ -38,11 +41,13 @@ while game:
     raketa.move()
 
 
+
     window.blit(fonks, (0, 0))
     raketa.render(window)
 
+    for Astero in asteroud:
+        Astero.render(window)
 
 
-    for asteroud in 
     pygame.display.flip()
     fps.tick(60)
