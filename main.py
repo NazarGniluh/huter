@@ -23,6 +23,12 @@ asteroud = []
 asteroud.append(Astero.Astero(10, -50, 50, 50, 5, "asteroid.png"))
 asteroud.append(Astero.Astero(60, -50, 50, 50, 5, "asteroid.png"))
 asteroud.append(Astero.Astero(134, -50, 50, 50, 5, "asteroid.png"))
+asteroud.append(Astero.Astero(238, -50, 50, 50, 5, "asteroid.png"))
+
+
+
+
+
 
 game = True
 while game:
@@ -40,10 +46,14 @@ while game:
 
     raketa.move()
 
+    for Astero in asteroud:
+        Astero.down(window)
+
 
 
     window.blit(fonks, (0, 0))
     raketa.render(window)
+
 
     for Astero in asteroud:
         Astero.render(window)

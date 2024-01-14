@@ -15,3 +15,9 @@ class Patron:
 
     def render(self, window):
         window.blit(self.texture, (self.hit_box.x, self.hit_box.y))
+
+
+    def sped(self):
+        self.hit_box.y -= self.speed
+
+

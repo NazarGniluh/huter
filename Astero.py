@@ -15,8 +15,12 @@ class Astero:
     def render(self, window):
         window.blit(self.texture, (self.hit_box.x, self.hit_box.y))
 
-    def down(self):
+
+
+    def down(self, window):
         self.hit_box.y += self.speed
+
+
 
 
 
