@@ -38,6 +38,6 @@ class Reketa:
             self.hit_box.x -= self.speed
 
         if keys[pygame.K_SPACE]:
-            self.patrons.append(Patron.Patron(self.hit_box.x, self.hit_box.y, 50, 5, 3,"bullet.png" ))
+            self.patrons.append(Patron.Patron(self.hit_box.x, self.hit_box.y, 50, 5, 3,"Bullet-PhotoRoom.png-PhotoRoom.png" ))
 
 
