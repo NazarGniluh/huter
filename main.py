@@ -12,6 +12,12 @@ def start_game():
         global settings
         with open("settings.json", "r", encoding="utf-8") as file:
             settings = json.load(file)
+
+    def write_data():
+        global settings
+        with open("settings.json", "w", encoding="utf-8") as file:
+            json.dump(settings, file)
+
     read_data()
     window = pygame.display.set_mode((500, 500))
     fps = pygame.time.Clock()
@@ -52,12 +58,19 @@ def start_game():
                 pygame.quit()
                 return
 
+        write_data()
         raketa.move()
 
         for a in asteroud:
             a.down(window)
 
-
+        for a in asteroud:
+            for b in raketa.patrons:
+                if a.hit_box.colliderect(b.hit_box):
+                    raketa.patrons.remove(b)
+                    a.hit_box.y = -50
+                    settings["money"] += 1
+                    break
 
         window.blit(fonks, (0, 0))
         raketa.render(window)

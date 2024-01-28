@@ -1,5 +1,6 @@
 import json
 
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import *
 
 from main import start_game
@@ -25,18 +26,33 @@ read_data()
 print(settings)
 start = QPushButton("ПОЧАТИ")
 change = QPushButton("Change")
+skin_1 = QLabel("КАРТИНКА")
+skin_1_img = QPixmap("asteroid.png")
+skin_1_img = skin_1_img.scaledToWidth(64)
+skin_1.setPixmap(skin_1_img)
+skin_1_buy = QPushButton("КУПИТИ СКІН")
 line_edit = QLineEdit(settings["skin"])
 linuz = QHBoxLayout()
 
 linuz.addWidget(start)
 linuz.addWidget(line_edit)
 linuz.addWidget(change)
+linuz.addWidget(skin_1)
+linuz.addWidget(skin_1_buy)
 window.setLayout(linuz)
 
+def buy_skin_1():
+    if settings["money"] >= 7:
+        settings["money"] -= 7
+        settings["skin"] = "asteroid.png"
+        write_data()
+    else:
+        print(" НЕ ХВАТАЄ ГРОШЕЙ!!")
 def change_data():
     settings["skin"] = line_edit.text()
     write_data()
 
+skin_1_buy.clicked.connect(buy_skin_1)
 change.clicked.connect(change_data)
 start.clicked.connect(start_game)
 
